@@ -21,11 +21,6 @@ html.light {
   --textColor : rgba(0,0,0);
 }
 
-html.dynamic {
-  --borderColor : rgb(194, 194, 194);
-  --textColor : rgba(0,0,0);
-}
-
 
 .bg-background-dynamic {
   background: linear-gradient(

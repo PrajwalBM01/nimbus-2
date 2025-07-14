@@ -1,4 +1,4 @@
-import { IconX } from "@tabler/icons-react"
+import { IconRainbow, IconX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "motion/react"
 import { useEffect, useState } from "react"
 import { useParamsStore } from "../context/parameters"
@@ -31,10 +31,16 @@ export default function(){
         <div> 
         <AnimatePresence>
             {parametersOpen? (
-                <motion.div layoutId="boundary" className="border rounded-2xl relative border-borderColor flex flex-col gap-1 p-2 w-xs backdrop-blur-3xl">
-                    <motion.h1 className="text-xs">Weather Parameters</motion.h1>
+                <motion.div layoutId="boundary" className=" shadow-md border-borderColor w-xs backdrop-blur-sm backdrop-brightness-95">
+                    <motion.button layoutId="weather-word" onClick={()=>setparametersOpen(prev=>!prev)} className="p-2 text-xs inline-block">
+                        weather Parameters
+                    </motion.button>
                    <button onClick={()=>setparametersOpen(false)} className="absolute right-0 top-0 p-2"><IconX size={15}/></button>
-                   <div>
+                   <motion.div
+                    initial={{opacity:0}}
+                    animate={{opacity:1}}
+                    transition={{duration:0.8}}
+                    className="p-2">
                         <div>
                             <label htmlFor="temp" className="block text-xs mb-1 ">Temprature: {temperature}°C</label>
                             <input
@@ -58,13 +64,13 @@ export default function(){
                                 className="w-full"
                             />
                         </div>
-                   </div>
+                   </motion.div>
                 </motion.div>
             ):(
-                <motion.div layoutId="boundary" className="border rounded-2xl border-borderColor backdrop-blur-3xl">
-                    <button onClick={()=>setparametersOpen(true)}>
-                        <motion.h1 className="text-xs p-2 ">Weather Parameters</motion.h1>
-                    </button>
+                <motion.div layoutId="boundary" className="  border-borderColor backdrop-blur-sm backdrop-brightness-95 shadow-md">
+                    <motion.button layoutId="weather-word" onClick={()=>setparametersOpen(prev=>!prev)} className="p-2 text-xs">
+                        weather Parameters
+                    </motion.button>
                 </motion.div>
             )}
         </AnimatePresence>

@@ -34,7 +34,7 @@ export default function Home() {
           <WeatherController/>
         </div>
       }
-      <div className='h-full w-full rounded-2xl overflow-hidden border border-borderColor'>
+      <div className={`h-full w-full rounded-2xl overflow-hidden ${theme !=="dynamic" && 'border border-borderColor'}`}>
         <Background/>
         {/* <div className='bg-background h-full'></div> */}
       </div>
