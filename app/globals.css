@@ -1,26 +1,44 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme inline{
+  --color-background : var(--background);
+  --color-backBackground : var(--backBackground)  ;
+  --color-textColor : var(--textColor);
+  --color-borderColor : var(--borderColor);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html.dark  {
+  --background : rgba(0,0,0);
+  --backBackground : rgb(27, 27, 27);
+  --borderColor : rgb(46, 46, 46);
+  --textColor : rgba(255,255,255);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html.light {
+  --background : rgb(255, 255, 255);
+  --backBackground : rgb(228, 228, 228);
+  --borderColor : rgb(194, 194, 194);
+  --textColor : rgba(0,0,0);
+}
+
+html.dynamic {
+
+}
+
+.bg-backBackground-dynamic{
+  background: linear-gradient(var( ),var(--gradient-end));
+}
+
+.rain-drop {
+  background: linear-gradient(to bottom, rgba(13,52,58,1) 0%, rgba(255,255,255,0.6) 100%);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-100vh);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  to {
+    transform: translateY(100vh);
+  }
 }
