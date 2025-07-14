@@ -53,7 +53,7 @@ export default function Background(){
       }, [dropCount, precipitation]);
     
     return(
-        <div className="h-full rounded-2xl bg-background overflow-hidden relative">
+        <div className={`h-full rounded-2xl ${theme==="dynamic"? 'bg-background-dynamic':'bg-background'}  overflow-hidden relative`}>
         {theme=="dynamic" && (
         drops.map(drop => (
             <div

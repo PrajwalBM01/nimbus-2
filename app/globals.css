@@ -22,11 +22,17 @@ html.light {
 }
 
 html.dynamic {
-
+  --borderColor : rgb(194, 194, 194);
+  --textColor : rgba(0,0,0);
 }
 
-.bg-backBackground-dynamic{
-  background: linear-gradient(var( ),var(--gradient-end));
+
+.bg-background-dynamic {
+  background: linear-gradient(
+    var(--weatherColor),
+    white
+  );
+  transition: background 0.3s ease;
 }
 
 .rain-drop {

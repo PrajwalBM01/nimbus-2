@@ -19,7 +19,7 @@ export default function Home() {
     return null;
   }
   return (
-    <div className={`${theme === 'dynamic'? 'bg-backBackground-dynamic' : 'bg-backBackground'} h-screen p-2 relative`}>
+    <div className={`${theme === 'dynamic'? 'bg-background-dynamic' : 'bg-backBackground'} h-screen p-2 relative`}>
       <div className='absolute flex justify-center items-center right-4 top-4 z-50'>
         {/* <Themes/> */}
         <select value={theme} onChange={e => setTheme(e.target.value)}>

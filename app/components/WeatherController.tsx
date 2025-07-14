@@ -11,21 +11,21 @@ export default function(){
     const setTemperature = useParamsStore((state)=>state.setTemperature)
     const setPrecipitation = useParamsStore((state)=>state.setPrecipitation)
 
+
     useEffect(() => {
-        // Map temperature to color (cold = blue, hot = red)
-        const tempHue = Math.max(0, Math.min(360, 240 - (temperature + 20) * 3)) // Blue to red
-        
-        // Map precipitation to saturation (more rain = more saturated)
-        const precipSat = Math.max(20, Math.min(100, precipitation * 40))
-        
-        document.documentElement.style.setProperty('--gradient-hue-1', tempHue.toString())
-        document.documentElement.style.setProperty('--gradient-sat-1', precipSat + '%')
-        document.documentElement.style.setProperty('--gradient-light-1', '40%')
-        
-        // Second color based on different calculation
-        document.documentElement.style.setProperty('--gradient-hue-2', (tempHue + 60) % 360)
-        document.documentElement.style.setProperty('--gradient-sat-2', (precipSat * 0.8) + '%')
-        document.documentElement.style.setProperty('--gradient-light-2', '25%')
+        const blue = { r: 33, g: 150, b: 243 };
+        const orange = { r: 255, g: 136, b: 0 };
+        const t = (temperature + 20) / 70;
+        const r = Math.round(blue.r + (orange.r - blue.r) * t);
+        const g = Math.round(blue.g + (orange.g - blue.g) * t);
+        const b = Math.round(blue.b + (orange.b - blue.b) * t);
+        const wetColor = { r: 32, g: 32, b: 32 };
+        const p = Math.min(precipitation / 2, 1);
+        const finalR = Math.round(r + (wetColor.r - r) * p);
+        const finalG = Math.round(g + (wetColor.g - g) * p);
+        const finalB = Math.round(b + (wetColor.b - b) * p);
+        document.documentElement.style.setProperty('--weatherColor',`rgb(${finalR},${finalG},${finalB})`)
+
       }, [temperature, precipitation])
     return (
         <div> 
