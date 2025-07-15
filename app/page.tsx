@@ -6,6 +6,7 @@ import { IconSunFilled } from '@tabler/icons-react';
 import Themes from './components/Themes';
 import Background from './components/Background';
 import WeatherController from './components/WeatherController';
+import ChatInterface from './components/ChatInterface';
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -34,17 +35,13 @@ export default function Home() {
           <WeatherController/>
         </div>
       }
-      <div className={`h-full w-full rounded-2xl overflow-hidden ${theme !=="dynamic" && 'border border-borderColor'}`}>
+      <div className={`h-full w-full rounded-2xl overflow-hidden ${theme !=="dynamic" && 'border border-borderColor'} relative`}>
+        <div className='z-10 absolute top-0 left-0 h-full w-full flex justify-center items-center'>
+          <ChatInterface/>
+        </div>
         <Background/>
-        {/* <div className='bg-background h-full'></div> */}
       </div>
     </div>
   );
 }
 
-
-{/* <select value={theme} onChange={e => setTheme(e.target.value)}>
-<option value="light">Light</option>
-<option value="dark">Dark</option>
-<option value="dynamic">dynamic</option>
-</select> */}

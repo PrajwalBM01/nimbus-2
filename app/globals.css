@@ -21,6 +21,10 @@ html.light {
   --textColor : rgba(0,0,0);
 }
 
+html.dynamic {
+  --textColor : rgb(3, 3, 3);
+  --borderColor : rgb(209, 208, 208);
+}
 
 .bg-background-dynamic {
   background: linear-gradient(
@@ -42,4 +46,18 @@ html.light {
   to {
     transform: translateY(100vh);
   }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2e2e2e;
 }
